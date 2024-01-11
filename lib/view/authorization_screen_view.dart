@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lens_map_app/view/registration_screen_view.dart';
 import 'package:lens_map_app/view/widget/entrance_button_widget.dart';
 import 'package:lens_map_app/view/widget/login_screen_name_widget.dart';
 import 'package:lens_map_app/view/widget/text_above_textfield_widget.dart';
@@ -40,7 +41,7 @@ class _AuthorizationState extends State<Authorization> {
                   child: const Text(
                     "Зарегестрируйтесь !",
                   ),
-                  onPressed: () {},
+                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Registration())),
                 )
               ],
             ),

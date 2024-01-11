@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lens_map_app/view/widget/popular_location_card_widget.dart';
 
 class Locations extends StatefulWidget {
   const Locations({super.key});
@@ -22,7 +23,7 @@ class _LocationsState extends State<Locations> {
         backgroundColor: Colors.white,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        actions:  [
+        actions: [
           Padding(
             padding: EdgeInsets.only(top: 8, right: 8),
             child: GestureDetector(
@@ -36,14 +37,29 @@ class _LocationsState extends State<Locations> {
           )
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.map), label: "Локации"),
-          BottomNavigationBarItem(icon: Icon(Icons.people), label: "Фотографы"),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Чат"),
-        ],
-      ),
+      bottomNavigationBar: Container(
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(12), topLeft: Radius.circular(12)),
+          ),
+          child: Material(
+            elevation: 0.0,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: BottomNavigationBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              selectedItemColor: Colors.black,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.map), label: "Локации"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.people), label: "Фотографы"),
+                BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Чат"),
+              ],
+            ),
+          )),
       body: ListView(
         children: [
           Padding(
@@ -63,9 +79,16 @@ class _LocationsState extends State<Locations> {
                   fontSize: 23,
                   fontWeight: FontWeight.w400),
             ),
-          )
+          ),
+          PopularLocations(),
+          PopularLocations(),
+          PopularLocations(),
+          PopularLocations(),
+          PopularLocations(),
+          PopularLocations()
         ],
       ),
     );
   }
 }
+
