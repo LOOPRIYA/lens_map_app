@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 class choice_button extends StatelessWidget {
+  final String text;
   const choice_button({
-    super.key,
+    super.key, required this.text,
   });
 
   @override
@@ -14,10 +15,10 @@ class choice_button extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12))),
               backgroundColor:
               MaterialStateProperty.all<Color>(const Color(0xffD9D9D9))),
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Text(
-              "Я фотограф",
+              text,
               style: TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w400,

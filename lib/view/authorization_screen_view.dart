@@ -5,6 +5,8 @@ import 'package:lens_map_app/view/widget/login_screen_name_widget.dart';
 import 'package:lens_map_app/view/widget/text_above_textfield_widget.dart';
 import 'package:lens_map_app/view/widget/textfield_widget.dart';
 
+String _login = "";
+
 class Authorization extends StatefulWidget {
   const Authorization({super.key});
 
@@ -13,6 +15,8 @@ class Authorization extends StatefulWidget {
 }
 
 class _AuthorizationState extends State<Authorization> {
+  final userLoginController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +31,9 @@ class _AuthorizationState extends State<Authorization> {
               text: "Авторизация",
             ),
             TextAbove(text: "Логин или email"),
-            LoginTextField(),
+            LoginTextField(text: "Введите Логин или email",),
             TextAbove(text: "Пароль"),
-            LoginTextField(),
+            LoginTextField(text: "Введите пароль"),
             Row(
               children: [
                 TextAbove(text: "Нет аккаунта?"),
@@ -41,7 +45,8 @@ class _AuthorizationState extends State<Authorization> {
                   child: const Text(
                     "Зарегестрируйтесь !",
                   ),
-                  onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => Registration())),
+                  onPressed: () => Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Registration())),
                 )
               ],
             ),
@@ -53,4 +58,3 @@ class _AuthorizationState extends State<Authorization> {
     );
   }
 }
-
