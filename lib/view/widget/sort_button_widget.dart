@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 class SortButton extends StatelessWidget {
+  final String text;
   const SortButton({
-    super.key,
+    super.key, required this.text,
   });
 
   @override
@@ -18,8 +19,8 @@ class SortButton extends StatelessWidget {
               backgroundColor:
               MaterialStateProperty.all<Color>(const Color(0xffD9D9D9))),
           onPressed: () {},
-          child: const Text(
-            "Стаж",
+          child: Text(
+            text,
             style: TextStyle(
                 fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
           ),

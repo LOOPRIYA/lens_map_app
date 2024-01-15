@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lens_map_app/view/chats_screen_view.dart';
+import 'package:lens_map_app/view/photographers_screen.dart';
 import 'package:lens_map_app/view/widget/popular_location_card_widget.dart';
 
 class Locations extends StatefulWidget {
@@ -37,34 +39,11 @@ class _LocationsState extends State<Locations> {
           )
         ],
       ),
-      bottomNavigationBar: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(12), topLeft: Radius.circular(12)),
-          ),
-          child: Material(
-            elevation: 0.0,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            child: BottomNavigationBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              selectedItemColor: Colors.black,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.map), label: "Локации"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.people), label: "Фотографы"),
-                BottomNavigationBarItem(icon: Icon(Icons.chat), label: "Чат"),
-              ],
-            ),
-          )),
       body: ListView(
         children: [
           Padding(
             padding:
-                const EdgeInsets.only(top: 30, left: 12, right: 12, bottom: 24),
+            const EdgeInsets.only(top: 30, left: 12, right: 12, bottom: 24),
             child: Container(
               height: 368,
               color: Colors.grey,
@@ -90,5 +69,6 @@ class _LocationsState extends State<Locations> {
       ),
     );
   }
+
 }
 

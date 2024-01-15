@@ -4,6 +4,7 @@ import 'package:lens_map_app/view/chats_screen_view.dart';
 import 'package:lens_map_app/view/locations_screen_view.dart';
 import 'package:lens_map_app/view/photographers_screen.dart';
 import 'package:lens_map_app/view/registration_screen_view.dart';
+import 'package:lens_map_app/view/start_view_screen.dart';
 
 void main() {
   runApp(const MyApp());

@@ -66,10 +66,10 @@ class _Photographers extends State<Photographers> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SortButton(),
-                SortButton(),
-                SortButton(),
-                SortButton(),
+                SortButton(text: "Стаж",),
+                SortButton(text: "Локация",),
+                SortButton(text: "Стоимость"),
+                SortButton(text: "Еще",),
               ],
             ),
             PhotographerCard(),

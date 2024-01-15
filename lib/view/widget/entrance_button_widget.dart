@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lens_map_app/view/locations_screen_view.dart';
 
+import '../start_view_screen.dart';
+
 class EntranceButton extends StatelessWidget {
   const EntranceButton({
     super.key,
@@ -24,7 +26,7 @@ class EntranceButton extends StatelessWidget {
                 fontSize: 23, fontWeight: FontWeight.w400, color: Colors.black),
           ),
           onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Locations())),
+              context, MaterialPageRoute(builder: (context) => Start())),
         ),
       ),
     );
