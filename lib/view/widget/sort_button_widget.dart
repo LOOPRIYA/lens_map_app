@@ -19,10 +19,12 @@ class SortButton extends StatelessWidget {
               backgroundColor:
               MaterialStateProperty.all<Color>(const Color(0xffD9D9D9))),
           onPressed: () {},
-          child: Text(
-            text,
-            style: TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),
+          child: FittedBox(
+            child: Text(
+              text,
+              style: const TextStyle(
+                  fontSize: 10, fontWeight: FontWeight.w400, color: Colors.black),
+            ),
           ),
         ),
       ),

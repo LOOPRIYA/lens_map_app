@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lens_map_app/view/widget/chat_card_widget.dart';
-import 'package:lens_map_app/view/widget/popular_location_card_widget.dart';
 
 class Chats extends StatefulWidget {
   const Chats({super.key});
@@ -26,7 +25,7 @@ class _Chats extends State<Chats> {
         automaticallyImplyLeading: false,
         actions: [
           Padding(
-            padding: EdgeInsets.only(top: 8, right: 8),
+            padding: const EdgeInsets.only(top: 8, right: 8),
             child: GestureDetector(
               onTap: () {},
               child: const Icon(
@@ -71,11 +70,8 @@ class _Chats extends State<Chats> {
           ChatCard(),
           ChatCard(),
           ChatCard(),
-
-
         ],
       ),
     );
   }
 }
-

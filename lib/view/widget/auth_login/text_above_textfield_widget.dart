@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TextAbove extends StatelessWidget {
   final String text;
 
-  TextAbove({
+  const TextAbove({super.key,
     required this.text,
   });
 
@@ -11,14 +11,12 @@ class TextAbove extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 16),
-      child: Container(
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(
-            text,
-            style: const TextStyle(
-                fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white),
-          ),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(
+          text,
+          style: const TextStyle(
+              fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white),
         ),
       ),
     );

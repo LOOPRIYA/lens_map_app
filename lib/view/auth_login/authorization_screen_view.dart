@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:lens_map_app/view/registration_screen_view.dart';
-import 'package:lens_map_app/view/widget/entrance_button_widget.dart';
-import 'package:lens_map_app/view/widget/login_screen_name_widget.dart';
-import 'package:lens_map_app/view/widget/text_above_textfield_widget.dart';
-import 'package:lens_map_app/view/widget/textfield_widget.dart';
+import 'package:lens_map_app/view/auth_login/registration_screen_view.dart';
+import 'package:lens_map_app/view/widget/auth_login/entrance_button_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/login_screen_name_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/text_above_textfield_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/textfield_widget.dart';
 
 String _login = "";
 
@@ -22,7 +22,7 @@ class _AuthorizationState extends State<Authorization> {
     return Scaffold(
       backgroundColor: const Color(0xff1c1d30),
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
             Align(
                 alignment: Alignment.topCenter,
@@ -50,8 +50,10 @@ class _AuthorizationState extends State<Authorization> {
                 )
               ],
             ),
-            Expanded(child: Container()),
-            EntranceButton()
+            const Padding(
+              padding: EdgeInsets.only(top: 24),
+              child: EntranceButton(),
+            )
           ],
         ),
       ),

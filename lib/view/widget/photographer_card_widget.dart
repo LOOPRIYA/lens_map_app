@@ -10,8 +10,7 @@ class PhotographerCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 7, left: 10, right: 10),
       child: Card(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         clipBehavior: Clip.hardEdge,
         child: SizedBox(
           height: 130,

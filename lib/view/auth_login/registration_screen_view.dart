@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:lens_map_app/view/authorization_screen_view.dart';
-import 'package:lens_map_app/view/widget/choice_button_registration_widget.dart';
-import 'package:lens_map_app/view/widget/entrance_button_widget.dart';
-import 'package:lens_map_app/view/widget/login_screen_name_widget.dart';
-import 'package:lens_map_app/view/widget/text_above_textfield_widget.dart';
-import 'package:lens_map_app/view/widget/textfield_widget.dart';
+import 'package:lens_map_app/view/auth_login/authorization_screen_view.dart';
+import 'package:lens_map_app/view/widget/auth_login/choice_button_registration_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/entrance_button_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/login_screen_name_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/text_above_textfield_widget.dart';
+import 'package:lens_map_app/view/widget/auth_login/textfield_widget.dart';
 
 class Registration extends StatefulWidget {
   const Registration({super.key});
@@ -28,18 +28,28 @@ class _Registration extends State<Registration> {
               text: "Регистрация",
             ),
             TextAbove(text: "Логин или email"),
-            LoginTextField(text: "Введите логин или email",),
+            LoginTextField(
+              text: "Введите логин или email",
+            ),
             TextAbove(text: "Имя"),
-            LoginTextField(text: "Введите имя",),
+            LoginTextField(
+              text: "Введите имя",
+            ),
             TextAbove(text: "Пароль"),
-            LoginTextField(text: "Введите пароль",),
+            LoginTextField(
+              text: "Введите пароль",
+            ),
             TextAbove(text: "Повторите пароль"),
-            LoginTextField(text: "Повторите пароль",),
-             const Row(
+            LoginTextField(
+              text: "Повторите пароль",
+            ),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                choice_button(text: "я фотограф"),
-                choice_button(text: "Я заказчик",),
+                ChoiceButton(text: "я фотограф"),
+                ChoiceButton(
+                  text: "Я заказчик",
+                ),
               ],
             ),
             Row(
@@ -53,19 +63,18 @@ class _Registration extends State<Registration> {
                   child: const Text(
                     "Войдите !",
                   ),
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Authorization())),
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Authorization())),
                 )
               ],
             ),
             Expanded(child: Container()),
-            EntranceButton()
+            const EntranceButton()
           ],
         ),
       ),
     );
   }
 }
-
-
-

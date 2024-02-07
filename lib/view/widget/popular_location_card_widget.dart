@@ -22,9 +22,9 @@ class PopularLocations extends StatelessWidget {
                 leading: CircleAvatar(
                   radius: 23,
                 ),
-                title: Text("Марьяна"),
-                subtitle: Text("Красная площадь"),
-                trailing: Text("10000р/сессия"),
+                title: FittedBox(alignment: Alignment.centerLeft,fit: BoxFit.scaleDown,child: Text("Марьяна", style: TextStyle(fontSize: 16),)),
+                subtitle: FittedBox(alignment: Alignment.centerLeft,fit: BoxFit.scaleDown,child: Text("Красная площадь", style: TextStyle(fontSize: 16),)),
+                trailing: FittedBox(fit: BoxFit.scaleDown,child: Text("10000р/сессия", style: TextStyle(fontSize: 16),)),
               )
             ],
           ),

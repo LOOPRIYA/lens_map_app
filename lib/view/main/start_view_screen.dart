@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lens_map_app/view/chats_screen_view.dart';
-import 'package:lens_map_app/view/locations_screen_view.dart';
-import 'package:lens_map_app/view/photographers_screen.dart';
+import 'package:lens_map_app/view/main/chats_screen_view.dart';
+import 'package:lens_map_app/view/main/locations_screen_view.dart';
+import 'package:lens_map_app/view/main/photographers_screen.dart';
 
 class Start extends StatefulWidget {
   const Start({super.key});
@@ -17,7 +17,7 @@ class _StartState extends State<Start> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topRight: Radius.circular(30), topLeft: Radius.circular(30)),
           boxShadow: [
@@ -25,7 +25,7 @@ class _StartState extends State<Start> {
           ],
         ),
         child: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
           ),
@@ -58,7 +58,8 @@ class _StartState extends State<Start> {
           ),
         ),
       ),
-      body: <Widget>[Locations(), Photographers(), Chats()][currentPageIndex],extendBody: true,
+      body: <Widget>[Locations(), Photographers(), Chats()][currentPageIndex],
+      extendBody: true,
     );
   }
 }

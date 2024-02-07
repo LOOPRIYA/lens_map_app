@@ -26,7 +26,7 @@ class _Photographers extends State<Photographers> {
           automaticallyImplyLeading: false,
           actions: [
             Padding(
-              padding: EdgeInsets.only(top: 8, right: 8),
+              padding: const EdgeInsets.only(top: 8, right: 8),
               child: GestureDetector(
                 onTap: () {},
                 child: const Icon(
@@ -66,10 +66,16 @@ class _Photographers extends State<Photographers> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SortButton(text: "Стаж",),
-                SortButton(text: "Локация",),
+                SortButton(
+                  text: "Стаж",
+                ),
+                SortButton(
+                  text: "Локация",
+                ),
                 SortButton(text: "Стоимость"),
-                SortButton(text: "Еще",),
+                SortButton(
+                  text: "Еще",
+                ),
               ],
             ),
             PhotographerCard(),
@@ -79,5 +85,3 @@ class _Photographers extends State<Photographers> {
         ));
   }
 }
-
-

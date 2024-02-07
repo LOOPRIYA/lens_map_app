@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlng/latlng.dart';
-import 'package:lens_map_app/view/chats_screen_view.dart';
-import 'package:lens_map_app/view/photographers_screen.dart';
 import 'package:lens_map_app/view/widget/popular_location_card_widget.dart';
 
 class Locations extends StatefulWidget {
@@ -45,12 +42,21 @@ class _LocationsState extends State<Locations> {
         children: [
           Padding(
             padding:
-            const EdgeInsets.only(top: 30, left: 12, right: 12, bottom: 24),
+                const EdgeInsets.only(top: 30, left: 12, right: 12, bottom: 24),
             child: Container(
               height: 368,
               color: Colors.grey,
-              child: Stack(children: [FlutterMap(options: MapOptions(), children: [TileLayer(                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.example.app',)])],),
+              child: Stack(
+                children: [
+                  FlutterMap(options: MapOptions(), children: [
+                    TileLayer(
+                      urlTemplate:
+                          'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      userAgentPackageName: 'com.example.app',
+                    )
+                  ])
+                ],
+              ),
             ),
           ),
           const Padding(
@@ -73,6 +79,4 @@ class _LocationsState extends State<Locations> {
       ),
     );
   }
-
 }
-
