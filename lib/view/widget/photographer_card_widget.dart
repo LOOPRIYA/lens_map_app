@@ -17,53 +17,59 @@ class PhotographerCard extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {},
-            child: const Column(
+            child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                ListTile(
-                  leading: CircleAvatar(
-                    radius: 23,
-                  ),
-                  title: Padding(
-                    padding: EdgeInsets.only(top: 15),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                Container(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: const Row(
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            "Анфиса",
-                            style: TextStyle(
-                              fontSize: 18,
-                            ),
-                          ),
+                        CircleAvatar(
+                          radius: 23,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            "Любая локация в Москве",
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
+                          padding: EdgeInsets.only(top: 16, left: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 6),
+                                child: Text(
+                                  "Анфиса",
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 6),
+                                child: Text(
+                                  "Любая локация в Москве",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 6),
+                                child: Text(
+                                  "Стаж: 10 лет",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                "От 1000р / сессия (1 час)",
+                                style: TextStyle(fontSize: 14),
+                              )
+                            ],
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            "Стаж: 10 лет",
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                        Text(
-                          "От 1000р / сессия (1 час)",
-                          style: TextStyle(fontSize: 14),
-                        )
                       ],
                     ),
                   ),
-                  trailing: Text("4.3/5"),
                 )
               ],
             ),
