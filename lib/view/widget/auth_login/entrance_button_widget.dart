@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lens_map_app/view/auth_login/other_data_freelancer_view.dart';
 
 import '../../main/start_view_screen.dart';
 
 class EntranceButton extends StatelessWidget {
+  final bool freelancer;
   const EntranceButton({
+    required this.freelancer,
     super.key,
   });
 
@@ -30,7 +33,7 @@ class EntranceButton extends StatelessWidget {
             ),
           ),
           onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Start())),
+              context, MaterialPageRoute(builder: (context) => freelancer == true ? const OtherDataFreelancerView() : const Start())),
         ),
       ),
     );

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:latlng/latlng.dart';
+import 'package:lens_map_app/view/profile/profile_view.dart';
 import 'package:lens_map_app/view/widget/popular_location_card_widget.dart';
+
+LatLng a = const LatLng(59.941335, 30.367267);
 
 class Locations extends StatefulWidget {
   const Locations({super.key});
@@ -26,11 +30,13 @@ class _LocationsState extends State<Locations> {
         automaticallyImplyLeading: false,
         actions: [
           Padding(
-            padding: EdgeInsets.only(top: 8, right: 8),
+            padding: const EdgeInsets.only(top: 8, right: 8),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileView()));
+              },
               child: const Icon(
-                Icons.search,
+                Icons.person,
                 color: Colors.black,
                 size: 32,
               ),
@@ -44,11 +50,14 @@ class _LocationsState extends State<Locations> {
             padding:
                 const EdgeInsets.only(top: 30, left: 12, right: 12, bottom: 24),
             child: Container(
-              height: 368,
+              height: 230,
               color: Colors.grey,
               child: Stack(
                 children: [
-                  FlutterMap(options: MapOptions(), children: [
+                  FlutterMap(options: const MapOptions(), children: [
+                    const MarkerLayer(markers: [
+                      //   Marker(point: a, child: Text(''))
+                    ]),
                     TileLayer(
                       urlTemplate:
                           'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -69,12 +78,12 @@ class _LocationsState extends State<Locations> {
                   fontWeight: FontWeight.w400),
             ),
           ),
-          PopularLocations(),
-          PopularLocations(),
-          PopularLocations(),
-          PopularLocations(),
-          PopularLocations(),
-          PopularLocations()
+          const PopularLocations(),
+          const PopularLocations(),
+          const PopularLocations(),
+          const PopularLocations(),
+          const PopularLocations(),
+          const PopularLocations()
         ],
       ),
     );

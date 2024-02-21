@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lens_map_app/view/widget/photographer_card_widget.dart';
 import 'package:lens_map_app/view/widget/sort_button_widget.dart';
 
@@ -30,7 +31,7 @@ class _Photographers extends State<Photographers> {
               child: GestureDetector(
                 onTap: () {},
                 child: const Icon(
-                  Icons.search,
+                  Icons.person,
                   color: Colors.black,
                   size: 32,
                 ),
@@ -61,26 +62,30 @@ class _Photographers extends State<Photographers> {
         //         ],
         //       ),
         //     )),
-        body: const Column(
+        body: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SortButton(
+                 SortButton(
                   text: "Стаж",
+                   type: 1,
+
                 ),
-                SortButton(
+                 SortButton(
                   text: "Локация",
+                   type: 2,
                 ),
-                SortButton(text: "Стоимость"),
+                 SortButton(text: "Стоимость", type: 3,),
                 SortButton(
+type: 3,
                   text: "Еще",
                 ),
               ],
             ),
-            PhotographerCard(),
-            PhotographerCard(),
-            PhotographerCard(),
+            const PhotographerCard(),
+            const PhotographerCard(),
+            const PhotographerCard(),
           ],
         ));
   }

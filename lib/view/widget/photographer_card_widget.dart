@@ -13,7 +13,6 @@ class PhotographerCard extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         clipBehavior: Clip.hardEdge,
         child: SizedBox(
-          height: 130,
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {},

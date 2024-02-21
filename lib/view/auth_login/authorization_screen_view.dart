@@ -52,7 +52,7 @@ class _AuthorizationState extends State<Authorization> {
             ),
             const Padding(
               padding: EdgeInsets.only(top: 24),
-              child: EntranceButton(),
+              child: EntranceButton(freelancer: false,),
             )
           ],
         ),
