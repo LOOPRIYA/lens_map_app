@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-class LoginTextField extends StatefulWidget {
+class LoginTextField extends StatelessWidget {
   final String text;
+  final TextEditingController controller;
+  const LoginTextField({super.key, required this.text, required this.controller});
 
-  const LoginTextField({super.key, required this.text});
-
-  @override
-  State<LoginTextField> createState() => _LoginTextFieldState();
-}
-
-class _LoginTextFieldState extends State<LoginTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -20,10 +15,11 @@ class _LoginTextFieldState extends State<LoginTextField> {
             color: const Color(0xffD9D9D9),
             borderRadius: BorderRadius.circular(12)),
         child: TextField(
+          controller: controller,
             textAlign: TextAlign.start,
             // style: TextStyle(color: Colors.white),
             decoration: InputDecoration(
-                hintText: widget.text,
+                hintText: text,
                 focusedBorder: InputBorder.none,
                 enabledBorder: InputBorder.none,
                 contentPadding: const EdgeInsets.only(left: 14))),

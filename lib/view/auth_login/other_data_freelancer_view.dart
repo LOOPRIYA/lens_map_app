@@ -5,6 +5,7 @@ import '../widget/auth_login/text_above_textfield_widget.dart';
 import '../widget/auth_login/textfield_widget.dart';
 FocusNode _focusNode = FocusNode();
 TextEditingController profileDescriptionController = TextEditingController();
+TextEditingController experienceController = TextEditingController();
 class OtherDataFreelancerView extends StatelessWidget {
   const OtherDataFreelancerView({super.key});
 
@@ -27,7 +28,8 @@ class OtherDataFreelancerView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const TextAbove(text: "Ваш опыт работы"),
-            const LoginTextField(
+            LoginTextField(
+              controller: experienceController,
               text: "Укажите Ваш опыт",
             ),
             const SizedBox(height: 12,),
@@ -70,7 +72,7 @@ class OtherDataFreelancerView extends StatelessWidget {
               padding: const EdgeInsets.all(12.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddPhotoFreelancerView()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AddPhotoFreelancerView()));
                 },
                 child: Container(
                   height: 52,

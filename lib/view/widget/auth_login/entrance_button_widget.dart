@@ -4,9 +4,11 @@ import 'package:lens_map_app/view/auth_login/other_data_freelancer_view.dart';
 import '../../main/start_view_screen.dart';
 
 class EntranceButton extends StatelessWidget {
-  final bool freelancer;
+  final String title;
+  final onTap;
   const EntranceButton({
-    required this.freelancer,
+    required this.title,
+    required this.onTap,
     super.key,
   });
 
@@ -22,18 +24,17 @@ class EntranceButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12))),
               backgroundColor:
                   MaterialStateProperty.all<Color>(const Color(0xffD9D9D9))),
-          child: const Padding(
-            padding: EdgeInsets.all(7),
+          child: Padding(
+            padding: const EdgeInsets.all(7),
             child: Text(
-              "Войти",
-              style: TextStyle(
+              title,
+              style: const TextStyle(
                   fontSize: 23,
                   fontWeight: FontWeight.w400,
                   color: Colors.black),
             ),
           ),
-          onPressed: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => freelancer == true ? const OtherDataFreelancerView() : const Start())),
+          onPressed: onTap,
         ),
       ),
     );
