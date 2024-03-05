@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lens_map_app/data/tag_data.dart';
 import 'package:lens_map_app/view/auth_login/add_photo_freelancer_view.dart';
 
 import '../widget/auth_login/text_above_textfield_widget.dart';
@@ -68,6 +69,23 @@ class OtherDataFreelancerView extends StatelessWidget {
                 ),),
             ),
             const SizedBox(height: 30,),
+            const TextAbove(text: "Добавьте теги"
+            ),
+          SizedBox(
+            height: 150,
+            child: GridView.count(
+              primary: false,
+              //   padding: const EdgeInsets.all(20),
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 4,
+              crossAxisCount: 2,
+              childAspectRatio: (7),
+              children: List.generate(tags.length, (index) => TagWidget(
+                title: tags[index],
+              )),
+
+            ),
+          ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: GestureDetector(
@@ -94,6 +112,50 @@ class OtherDataFreelancerView extends StatelessWidget {
           ],
         ),
       ),),
+    );
+  }
+}
+
+class TagWidget extends StatefulWidget {
+  bool tap = false;
+  final String title;
+  TagWidget({super.key, required this.title});
+
+  @override
+  State<TagWidget> createState() => _TagWidgetState();
+}
+
+class _TagWidgetState extends State<TagWidget> {
+  @override
+  Widget build(BuildContext context) {
+
+    return GestureDetector(
+      onTap: () {
+        widget.tap = !widget.tap;
+        print(widget.tap);
+        setState(() {});
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+              color: widget.tap == false ? const Color(0xff8875FF) : Colors.green),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: 8.0, vertical: 3),
+          child: Center(
+            child: Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Color(0xffffffff),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -24,6 +24,7 @@ class EntranceButton extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12))),
               backgroundColor:
                   MaterialStateProperty.all<Color>(const Color(0xffD9D9D9))),
+          onPressed: onTap,
           child: Padding(
             padding: const EdgeInsets.all(7),
             child: Text(
@@ -34,7 +35,6 @@ class EntranceButton extends StatelessWidget {
                   color: Colors.black),
             ),
           ),
-          onPressed: onTap,
         ),
       ),
     );

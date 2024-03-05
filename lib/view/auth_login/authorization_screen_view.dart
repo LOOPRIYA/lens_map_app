@@ -72,7 +72,10 @@ class Authorization extends StatelessWidget {
                 onTap: () async {
                  int success = await login();
                  print(success);
-                 success != -1 ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>const Start())) : null;
+                 success != -1 ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>const Start())) :  ScaffoldMessenger.of(context).showSnackBar(
+                     const SnackBar(
+                       content: Text('Неверный логин или пароль'),
+                     ));
                 },
                 child: Container(
                   height: 52,

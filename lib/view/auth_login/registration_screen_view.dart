@@ -153,6 +153,7 @@ class _Registration extends State<Registration> {
                   ),
                   child: Center(child: Text(freelancer == false ? 'Зарегистрироваться' : 'Продолжить',
                   style: const TextStyle(
+                    fontFamily: 'assets/font/UniNeue-Trial-Bold.ttf',
                     fontSize: 18,
                     fontWeight: FontWeight.w800,
                   ),)),
