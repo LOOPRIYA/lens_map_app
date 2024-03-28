@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lens_map_app/controller/auth_controller.dart';
 import 'package:lens_map_app/custom_textfield_widget.dart';
+import 'package:lens_map_app/view/profile/create_service_view.dart';
 
 TextEditingController placeController = TextEditingController();
 TextEditingController priceController = TextEditingController();
 TextEditingController timeController = TextEditingController();
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends GetView<UserController> {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(UserController());
+    controller.getMyLocations();
     return Scaffold(
       backgroundColor: const Color(0xff1c1d30),
       appBar: AppBar(
@@ -31,21 +35,21 @@ class ProfileView extends StatelessWidget {
                 ),
                 color: Colors.white
               ),
-              child: const Padding(
-                padding: EdgeInsets.all(16.0),
+              child:  Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(radius: 32,),
-                    SizedBox(width: 12,),
+                    const CircleAvatar(radius: 32,),
+                    const SizedBox(width: 12,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Андрей Ковалёв',
-                        style: TextStyle(fontSize: 18),),
-                        SizedBox(height: 3,),
-                        Text('jekcatpopov@gmail.com',
-                        style: TextStyle(color: Colors.grey),),
+                        Text(controller.userModel.value.name,
+                        style: const TextStyle(fontSize: 18),),
+                        const SizedBox(height: 3,),
+                        Text(controller.userModel.value.email,
+                        style: const TextStyle(color: Colors.grey),),
                       ],
                     )
                   ],
@@ -73,35 +77,17 @@ class ProfileView extends StatelessWidget {
                         const Text('Локации работы'),
                         GestureDetector(child: const Text('Добавить'),
                         onTap: () {
-                          Get.bottomSheet(
-                            Container(
-                              height: 400,
-                              width: MediaQuery.of(context).size.width,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12),
-                                )
-                              ),
-                              child: Row(
-                                children: [
-                                  CustomTextFieldWidget(controller: placeController, text: 'Место', password: false),
-                                  const SizedBox(height: 14,),
-                                  CustomTextFieldWidget(controller: priceController, text: 'Цена в час', password: false),
-                                  const SizedBox(height: 14,),
-                                  CustomTextFieldWidget(controller: timeController, text: 'Часы работы', password: false),
-                                ],
-                              ),
-                            )
-                          );
+
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>const CreateServicesView()));
                         },),
                       ],
                     ),
                     const SizedBox(height: 24,),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: List.generate(10, (index) => Padding(
+                      children: List.generate(controller.myLocations.length, (index) {
+                        var item = controller.myLocations[index];
+                        return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 3.0),
                         child: Container(
                           width: MediaQuery.of(context).size.width - 32,
@@ -110,23 +96,23 @@ class ProfileView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(12),
                           ),
                           child:  Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text('Красная площадь${index}'),
-                                    Text('от 1100р/час'),
+                                    Text(item['title']),
+                                    Text(item['price']),
                                   ],
                                 ),
-                                Text('Пн-Пт с 11:00 до 23:00'),
+                                const Text('Пн-Пт с 11:00 до 23:00'),
                               ],
                             ),
                           ),
                         ),
-                      )),
+                      );}),
                     ),
                   ],
                 ),

@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class PopularLocations extends StatelessWidget {
+  final userName;
+  final title;
+  final price;
   const PopularLocations({
+    required this.price,
+    required this.userName,
+    required this.title,
     super.key,
   });
 
@@ -12,22 +18,35 @@ class PopularLocations extends StatelessWidget {
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         clipBehavior: Clip.hardEdge,
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onTap: () {},
-          child: const Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              ListTile(
-                leading: CircleAvatar(
-                  radius: 23,
-                ),
-                title: FittedBox(alignment: Alignment.centerLeft,fit: BoxFit.scaleDown,child: Text("Марьяна", style: TextStyle(fontSize: 16),)),
-                subtitle: FittedBox(alignment: Alignment.centerLeft,fit: BoxFit.scaleDown,child: Text("Красная площадь", style: TextStyle(fontSize: 16),)),
-                trailing: FittedBox(fit: BoxFit.scaleDown,child: Text("10000р/сессия", style: TextStyle(fontSize: 16),)),
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTile(
+              leading: const CircleAvatar(
+                radius: 23,
+              ),
+              title: FittedBox(
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    userName,
+                    style: const TextStyle(fontSize: 16),
+                  )),
+              subtitle: FittedBox(
+                  alignment: Alignment.centerLeft,
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    title,
+                    style: const TextStyle(fontSize: 16),
+                  )),
+              trailing: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    "$price/сессия",
+                    style: const TextStyle(fontSize: 16),
+                  )),
+            )
+          ],
         ),
       ),
     );

@@ -14,7 +14,7 @@ dependencies:
   get:
   dio:
   cupertino_icons: ^1.0.2
-
+  google_fonts: 6.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -25,10 +25,6 @@ flutter:
   assets:
     - assets/
     - assets/font/
-    -
+
   uses-material-design: true
 
-fonts:
-  - family: font
-    fonts:
-      - asset: assets/font/UniNeue-Trial-Bold.ttf  # Убедитесь, что путь указывает на правильное местоположение файла шрифта

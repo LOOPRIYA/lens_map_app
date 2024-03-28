@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:lens_map_app/controller/auth_controller.dart';
 import 'package:lens_map_app/view/auth_login/registration_screen_view.dart';
 import 'package:lens_map_app/view/main/start_view_screen.dart';
 import 'package:lens_map_app/view/widget/auth_login/login_screen_name_widget.dart';
@@ -10,30 +12,13 @@ import 'package:lens_map_app/view/widget/auth_login/textfield_widget.dart';
 TextEditingController _userLoginController = TextEditingController();
 TextEditingController _passwordController = TextEditingController();
 
-Future<int> login() async {
-  Dio dio = Dio();
- final response = await dio.post('http://63.251.122.116:2308/login',
-  data: {
-    'email': _userLoginController.text,
-    'password': _passwordController.text,
-  });
- print(_userLoginController.text);
- print(_passwordController.text);
- var data = jsonDecode(response.data);
- print(data);
- if(data['success'] == false) {
-   return -1;
- }
- else {
-   return int.parse(data['uid']);
- }
-}
 
-class Authorization extends StatelessWidget {
+class Authorization extends GetView<UserController> {
   const Authorization({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Get.put(UserController());
     return Scaffold(
       backgroundColor: const Color(0xff1c1d30),
       body: SafeArea(
@@ -70,8 +55,7 @@ class Authorization extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: GestureDetector(
                 onTap: () async {
-                 int success = await login();
-                 print(success);
+                 int success = await controller.login(_userLoginController.text, _passwordController.text);
                  success != -1 ?  Navigator.push(context, MaterialPageRoute(builder: (context)=>const Start())) :  ScaffoldMessenger.of(context).showSnackBar(
                      const SnackBar(
                        content: Text('Неверный логин или пароль'),
