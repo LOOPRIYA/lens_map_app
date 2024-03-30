@@ -1,14 +1,20 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:lens_map_app/model/user_model.dart';
 import 'package:lens_map_app/server_routes.dart';
+import 'package:latlong2/latlong.dart';
 
 UserModel user =
     const UserModel(email: '', uid: '', name: '', freelancer: 0, balance: 0);
 
 class UserController extends GetxController {
+  Rx<Marker> marker =
+      const Marker(point: LatLng(0, 0), child: Icon(Icons.add_location)).obs;
+  Rx<LatLng> lat = const LatLng(0,0).obs;
   Dio dio = Dio();
   RxList myLocations = [].obs;
   Rx<UserModel> userModel = const UserModel(
@@ -16,7 +22,6 @@ class UserController extends GetxController {
       .obs;
 
   Future<int> login(String email, String password) async {
-
     final response = await dio.post('${ServerRoutes.host}/login', data: {
       'email': email.toString(),
       'password': password.toString(),
@@ -41,17 +46,21 @@ class UserController extends GetxController {
       return int.parse(data['uid']);
     }
   }
+
   Future<void> getMyLocations() async {
-    final response = await dio.get('${ServerRoutes.host}/myLocations?uid=${userModel.value.uid}');
+    final response = await dio
+        .get('${ServerRoutes.host}/myLocations?uid=${userModel.value.uid}');
     myLocations.value = jsonDecode(response.data);
   }
+
   RxList days = [
     false,
     false,
     false,
     false,
     false,
-    false,false,
+    false,
+    false,
   ].obs;
   RxList<TimeModel> hours = [
     const TimeModel(title: '00:00', time: 100),
@@ -86,6 +95,7 @@ class UserController extends GetxController {
     startTime.value = time;
     notifyChildrens();
   }
+
   void setEndTime(int time) {
     endTime.value = time;
     notifyChildrens();
@@ -97,6 +107,21 @@ class UserController extends GetxController {
     notifyChildrens();
   }
 
+  void changePoint(newPoint,geo) {
+    marker.value = newPoint;
+    lat.value = geo;
+    notifyChildrens();
+  }
+  Future<void> createService(price, title, geo_x, geo_y) async {
+    await dio.post('${ServerRoutes.host}/locations',
+    data: {
+      'uid': userModel.value.uid,
+      'geo_x': geo_x.toString(),
+      'geo_y': geo_y.toString(),
+      'title': title,
+      'price': price,
+    });
+  }
 }
 
 class TimeModel {

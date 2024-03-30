@@ -194,6 +194,43 @@ class MarketContent extends StatelessWidget {
                                 fontWeight: FontWeight.w800,
                                 fontSize: 18,
                               ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 24,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(userName),
+                            Text('$userExp года')
+                          ],
+                        ),
+                        SizedBox(height: 24,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 52,
+                              width: MediaQuery.of(context).size.width/ 2 -32,
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Center(
+                                child: Text(
+                                  'Написать'
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 12,),
+                            Container(
+                              height: 52,
+                              width: MediaQuery.of(context).size.width/ 2 -32,
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: const Center(child: Text('Профиль'),),
                             )
                           ],
                         )

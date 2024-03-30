@@ -4,11 +4,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:lens_map_app/controller/auth_controller.dart';
 import '../../custom_textfield_widget.dart';
+import '../main/locations_screen_view.dart';
 
+
+MapController _mapController = MapController();
 TextEditingController _categoryController = TextEditingController();
 TextEditingController _nameController = TextEditingController();
 TextEditingController _priceController = TextEditingController();
@@ -45,10 +49,28 @@ class CreateServicesView extends GetView<UserController> {
                   const SizedBox(
                     height: 24,
                   ),
-                  CustomTextFieldWidget(
-                      controller: _descriptionController,
-                      text: "Описание",
-                      password: false),
+                  SizedBox(
+                    height: 300,
+                    width: MediaQuery.of(context).size.width,
+                    child: FlutterMap(
+                       mapController: _mapController,
+                        options: MapOptions(
+                          onTap: (a, b) {
+                            print(a);
+                            print(b);
+                         controller.changePoint( Marker(point: b, child: const Icon(Icons.not_listed_location_rounded)), b);
+                          },
+                          initialCenter: const LatLng(55.3, 44.2),
+                        ),
+                        children: [
+                          TileLayer(
+                            urlTemplate:
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                            userAgentPackageName: 'com.example.app',
+                          ),
+                           MarkerLayer(markers: [controller.marker.value]),
+                        ]),
+                  ),
                   const SizedBox(
                     height: 24,
                   ),
@@ -105,8 +127,8 @@ class CreateServicesView extends GetView<UserController> {
                   ),
                  Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
                             horizontal: 42.0, vertical: 8),
                         child: Row(
                           mainAxisAlignment:
@@ -114,14 +136,14 @@ class CreateServicesView extends GetView<UserController> {
                           children: [
                             Text(
                               'Начало',
-                              style: GoogleFonts.inter(
+                              style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 16,
                               ),
                             ),
                             Text(
                               'Конец',
-                              style: GoogleFonts.inter(
+                              style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 fontSize: 16,
                               ),
@@ -159,7 +181,7 @@ class CreateServicesView extends GetView<UserController> {
                      const SizedBox(),
                   const SizedBox(height: 32,),
                   GestureDetector(onTap: (){
-                  //  controller.createServise(name: _nameController.text, categoryId: controller.categoryId.value, categoryName: controller.category.value, description: _descriptionController.text, price: _priceController.text);
+                    controller.createService(_priceController.text, _nameController.text, controller.lat.value.latitude, controller.lat.value.longitude);
                     Navigator.pop(context);
                   },
                     child: Container(
@@ -169,9 +191,9 @@ class CreateServicesView extends GetView<UserController> {
                         borderRadius: BorderRadius.circular(12),
                         color: Colors.red,
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text('Создать',
-                          style: GoogleFonts.inter(
+                          style: TextStyle(
                             fontWeight: FontWeight.w800,
                             fontSize: 16,
                             color: Colors.white,

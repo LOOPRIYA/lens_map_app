@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lens_map_app/controller/auth_controller.dart';
-import 'package:lens_map_app/custom_textfield_widget.dart';
 import 'package:lens_map_app/view/profile/create_service_view.dart';
 
 TextEditingController placeController = TextEditingController();
