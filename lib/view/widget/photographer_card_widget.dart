@@ -19,55 +19,53 @@ class PhotographerCard extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Container(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: const Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 23,
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      CircleAvatar(
+                        radius: 23,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 16, left: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 6),
+                              child: Text(
+                                "Анфиса",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 6),
+                              child: Text(
+                                "Любая локация в Москве",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 6),
+                              child: Text(
+                                "Стаж: 10 лет",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                            Text(
+                              "От 1000р / сессия (1 час)",
+                              style: TextStyle(fontSize: 14),
+                            )
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(top: 16, left: 16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(bottom: 6),
-                                child: Text(
-                                  "Анфиса",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(bottom: 6),
-                                child: Text(
-                                  "Любая локация в Москве",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(bottom: 6),
-                                child: Text(
-                                  "Стаж: 10 лет",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "От 1000р / сессия (1 час)",
-                                style: TextStyle(fontSize: 14),
-                              )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 )
               ],

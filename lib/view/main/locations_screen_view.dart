@@ -7,6 +7,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:lens_map_app/controller/services_controller.dart';
+import 'package:lens_map_app/view/profile/other_profile_view.dart';
 import 'package:lens_map_app/view/profile/profile_view.dart';
 import 'package:lens_map_app/view/widget/popular_location_card_widget.dart';
 
@@ -230,7 +231,7 @@ class MarketContent extends StatelessWidget {
                                 color: Colors.grey.shade300,
                                 borderRadius: BorderRadius.circular(8),
                               ),
-                              child: const Center(child: Text('Профиль'),),
+                              child: InkWell(onTap: () {Get.to(OtherProfileView());},child: const Center(child: Text('Профиль'),)),
                             )
                           ],
                         )
