@@ -16,10 +16,10 @@ class PhotographerCard extends StatelessWidget {
           child: InkWell(
             splashColor: Colors.blue.withAlpha(30),
             onTap: () {},
-            child: Column(
+            child: const Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                const Padding(
+                Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Row(
                     children: [

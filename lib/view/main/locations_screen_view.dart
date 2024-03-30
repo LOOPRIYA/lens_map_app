@@ -219,7 +219,7 @@ class MarketContent extends StatelessWidget {
                               ),
                               child: const Center(
                                 child: Text(
-                                  'Написать'
+                                  'Записаться'
                                 ),
                               ),
                             ),
