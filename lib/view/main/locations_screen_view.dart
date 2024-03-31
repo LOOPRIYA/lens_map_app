@@ -155,87 +155,92 @@ class MarketContent extends StatelessWidget {
             context: context,
             barrierDismissible: false, // user must tap button!
             builder: (BuildContext context) {
-              return AlertDialog(
-                backgroundColor: const Color(0xff2D2D2D).withOpacity(0),
-                contentPadding: EdgeInsets.zero,
-                insetPadding: const EdgeInsets.symmetric(horizontal: 12),
-                content: Container(
-                  height: 338,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.white,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(Icons.arrow_back_ios)),
-                        const SizedBox(
-                          height: 24,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              upperfirst(title.toString()),
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                            Text(
-                              price.toString(),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 24,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(userName),
-                            Text('$userExp года')
-                          ],
-                        ),
-                        SizedBox(height: 24,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              height: 52,
-                              width: MediaQuery.of(context).size.width/ 2 -32,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: const Center(
-                                child: Text(
-                                  'Записаться'
+              return Padding(
+                padding: const EdgeInsets.all(16),
+                child: AlertDialog(
+                  backgroundColor: const Color(0xff2D2D2D).withOpacity(0),
+                  contentPadding: EdgeInsets.zero,
+                  insetPadding: const EdgeInsets.symmetric(horizontal: 12),
+                  content: Container(
+                    height: 333,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(Icons.arrow_back_ios)),
+                          const SizedBox(
+                            height: 24,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                upperfirst(title.toString()),
+                                style: const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700,
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 12,),
-                            Container(
-                              height: 52,
-                              width: MediaQuery.of(context).size.width/ 2 -32,
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(8),
+                              Text(
+                                price.toString(),
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 18,
+                                ),
                               ),
-                              child: InkWell(onTap: () {Get.to(OtherProfileView());},child: const Center(child: Text('Профиль'),)),
-                            )
-                          ],
-                        )
-                      ],
+                            ],
+                          ),
+                          const SizedBox(height: 24,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(userName),
+                              Text('Стаж: $userExp года')
+                            ],
+                          ),
+                          SizedBox(height: 24,),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Container(
+                                  height: 52,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: const Center(
+                                    child: Text(
+                                      'Записаться'
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 12,),
+                              Expanded(
+                                child: Container(
+                                  height: 52,
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey.shade300,
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: InkWell(onTap: () {Get.to(OtherProfileView());},child: const Center(child: Text('Профиль'),)),
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -257,9 +262,12 @@ class MarketContent extends StatelessWidget {
             const SizedBox(
               width: 4,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(userName), Text('$price/час')],
+            Padding(
+              padding: const EdgeInsets.all(3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [SizedBox(height: 3,),Text(userName), Text('$price/час')],
+              ),
             )
           ],
         ),
